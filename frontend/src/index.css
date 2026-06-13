@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", system-ui, sans-serif;
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  --color-accent-400: #fbbf24;
+  --color-accent-500: #f59e0b;
+  --color-accent-600: #d97706;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-kid-sky: #38bdf8;
+  --color-kid-sun: #fbbf24;
+  --color-kid-coral: #fb7185;
+  --color-kid-mint: #6ee7b7;
+  --color-kid-lavender: #c4b5fd;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  75% { transform: rotate(8deg); }
+}
+
+body {
+  @apply bg-gradient-to-br from-sky-50 via-white to-amber-50/40 text-slate-900 antialiased min-h-screen;
+}
+
+.bg-kid-gradient {
+  @apply bg-gradient-to-br from-primary-500 via-kid-sky to-primary-700;
+}
+
+.card-playful {
+  @apply bg-white rounded-3xl border-2 border-primary-100 shadow-lg shadow-primary-100/50;
+}
+
+.btn-playful {
+  @apply rounded-2xl font-bold min-h-[44px] px-6 transition-all;
+}
+
+.progress-shimmer {
+  background: linear-gradient(90deg, #3b82f6 0%, #38bdf8 40%, #fbbf24 60%, #3b82f6 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s linear infinite;
+}
+
+.animate-float {
+  animation: float-gentle 3s ease-in-out infinite;
+}
+
+.animate-wiggle:hover {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-shimmer,
+  .animate-float,
+  .animate-wiggle:hover {
+    animation: none;
+  }
+}
