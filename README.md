@@ -268,7 +268,8 @@ spring:
 | Vasudha Desai  | Backend Developer    |
 | Pooja Sulgekar | UI/UX & Testing      |
 
-*(Replace with your actual hackathon team members if applicable.)*
+Project video link-
+https://www.loom.com/share/e185ce0171c846f0a04649c621376303
 
 ---
 
