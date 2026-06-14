@@ -16,8 +16,7 @@ public class CorsConfig {
                 registry.addMapping("/**")
                         .allowedOrigins(
                             "http://localhost:5173",
-                            "https://vercel.com/afsana-mujawars-projects/gamified-learning-h2os/4dZjpNThiDHSNbY1pecqKEBok1zN"
-                        )
+"https://gamified-learning-h2os.vercel.app/"                        )
                         .allowedMethods("*")
                         .allowedHeaders("*");
             }
