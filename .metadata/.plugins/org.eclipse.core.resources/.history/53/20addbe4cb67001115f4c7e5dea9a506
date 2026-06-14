@@ -1,0 +1,44 @@
+package com.rurallearn.config;
+
+import com.rurallearn.security.JwtAuthFilter;
+
+import jakarta.servlet.Filter;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+@Configuration
+public class JwtAuthFilter {
+
+    private final Filter jwtAuthFilter;
+
+    public JwtAuthFilter(JwtAuthFilter jwtAuthFilter) {
+        this.jwtAuthFilter = (Filter) jwtAuthFilter;
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+        http
+            // ✅ Enable CORS (required for Vercel frontend)
+            .cors(cors -> {})
+            
+            // ❌ Disable CSRF for REST APIs
+            .csrf(csrf -> csrf.disable())
+
+            // ✅ Route security rules
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/h2-console/**").permitAll() // optional (dev)
+                .anyRequest().authenticated()
+            )
+
+            // ✅ Add JWT filter BEFORE Spring Security auth filter
+            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+    }
+}

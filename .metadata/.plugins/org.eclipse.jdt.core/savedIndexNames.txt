@@ -59,7 +59,6 @@ INDEX VERSION 1.134+D:\Projects\HacathonProject\gamified_leaderboard\.metadata\.
 1321844310.index
 496363616.index
 431613989.index
-1965174767.index
 1618056340.index
 2797207550.index
 3042998900.index
